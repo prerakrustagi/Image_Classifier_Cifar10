@@ -22,5 +22,5 @@ We are going forward with (width x height x num_channel)
   * Reshape - convert [1, 3072] to [3, 32, 32]
   * Transpose - convert [3, 32, 32] to [32, 32, 3]
 
-
+![Image Pre-process Steps](Images/Image_Preprocess.png)
   
