@@ -122,4 +122,11 @@ We will use SAME padding as it will ensure same size of the image after convulat
 Max-Pooling can be considered as a special type of convolution, except it doesn't have weights. The purpose is to shrink the image by letting the strongest value survived. ksize=[1,2,2,1] and strides=[1,2,2,1] will shrink the image into half size.
 
 
-### Hyperparameters
+### AIM
+Minimize the cost by applying a algorithm of your choice
+
+#### Algorithm
+* Adam Optimizer
+Unlike Stochastic gradient descent where the learning rate does not change during training, in case of AdamOptimizer, the learning rate is maintained for each network weight (parameter) and separately adapted as learning unfolds.
+
+![Optimizer Comparison on CIFAR-10](Images/optimizers.png)
