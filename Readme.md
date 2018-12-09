@@ -1,11 +1,23 @@
 # ML_Project | Image Classifier based on CIFAR-10 Dataset
 
+## 0. How To
+* With Pre-Trained Model
+  * Copy the content of folder "Pre_Trained_Model" to the parent folder
+  * python save_pre_processed_data.py
+  * python test_cnn.py
+* Without Pre-Trained Model
+  * python save_pre_processed_data.py
+  * GoTo file: train.py
+    * Change the value of "save_model_path" to your desired path
+    * python train.py  
+
 ## 1. List of files
 * data_batch_1
 * data_batch_2
 * data_batch_3
 * data_batch_4
 * data_batch_5
+* test_batch
 
 Each file packs the data using pickle module in python.
 
