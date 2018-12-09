@@ -146,9 +146,11 @@ The process of training requires you to define the following hyperparameters
 * epochs: The number of times you need to train the classifier using the same example. We started with 5 and ultimately settled at 10, because beyond that the accuracy was not improving.
 * batch_size = The number of examples that you want to process parallelly. It depends on your system memory. We choose 128 keeping in mind the hardware constraints of our system.
 * keep_probability = in what probability how many units of each layer should be kept. We choose 0.7. This makes the dropout to be 30%.
-* learning_rate = The smallest change that the ptimizer will make in order to minimize the cost. We choose 0.001, as this value is the default recommended value by tensorflow.
+* learning_rate = The smallest change that the optimizer will make in order to minimize the cost. We choose 0.001, as this value is the default recommended value by tensorflow.
 
 ````
+We used the validation-set to calculate this accuracy.
+
 Epoch  1, CIFAR-10 Batch 1:  Loss:     2.1369 Validation Accuracy: 0.237200
 Epoch  1, CIFAR-10 Batch 2:  Loss:     1.6714 Validation Accuracy: 0.316400
 Epoch  1, CIFAR-10 Batch 3:  Loss:     1.3447 Validation Accuracy: 0.401000
@@ -168,3 +170,67 @@ Epoch 10, CIFAR-10 Batch 3:  Loss:     0.0097 Validation Accuracy: 0.736600
 Epoch 10, CIFAR-10 Batch 4:  Loss:     0.0282 Validation Accuracy: 0.737000
 Epoch 10, CIFAR-10 Batch 5:  Loss:     0.0092 Validation Accuracy: 0.729600
 ````
+
+## 9. Testing
+* As mentioned earlier, we are provided with a dedicated test-set of 10000 examples. 
+* We will use that set to test the accuracy of this model.
+* This step is exactly similar to the validation accuracy in the above image. The input will change from validation-set to test-set.
+* Steps
+  * Calculate Logits using the trained neural network
+  ````
+   [
+      -3.5272131,
+      -4.8528223,
+      -1.36957669,
+      7.41049385, // Max Value (Index - 3)
+      -2.18015099,
+      3.23953629,
+      -1.27799594,
+      -2.93476057,
+      -1.17643523,
+      -2.84120584
+    ],
+    [
+      1.88694978,
+      0.929766893,
+      -1.07205653,
+      -2.12049198,
+      -4.22954178,
+      -5.52185345,
+      -3.78540659,
+      -7.54574299,
+      11.0548038, // Max Value (Index - 8)
+      0.0308044963
+    ]
+  ````
+  * Normalize the logits
+  * Find the index of logit that has the max value
+  * Compare it with the actual output.
+  ````
+   [
+      0.0,
+      0.0,
+      0.0,
+      1.0, // Max Value (Index - 3)
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0, // Max Value (Index - 8)
+      0.0
+    ]
+  ````
+  * Determine the final accuracy.
+  
