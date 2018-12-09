@@ -184,6 +184,8 @@ Epoch 10, CIFAR-10 Batch 4:  Loss:     0.0282 Validation Accuracy: 0.737000
 Epoch 10, CIFAR-10 Batch 5:  Loss:     0.0092 Validation Accuracy: 0.729600
 ````
 
+![Validation Accuracy & Loss VS Epochs](Images/Valid_Acc_Loss.png)
+
 ## 9. Testing
 * As mentioned earlier, we are provided with a dedicated test-set of 10000 examples. 
 * We will use that set to test the accuracy of this model.
