@@ -1,7 +1,6 @@
 import pickle
 import numpy as np
 import tensorflow as tf
-import random
 
 def load_label_names():
     return ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
@@ -16,8 +15,6 @@ def batch_features_labels(features, labels, batch_size):
 
 save_model_path = './image_classification'
 batch_size = 64
-n_samples = 10
-top_n_predictions = 5
 
 def test_model():
     test_features, test_labels = pickle.load(open('preprocess_training.p', mode='rb'))
@@ -38,7 +35,6 @@ def test_model():
         # Get accuracy in batches for memory limitations
         test_batch_acc_total = 0
         test_batch_count = 0
-        c = 1
         for train_feature_batch, train_label_batch in batch_features_labels(test_features, test_labels, batch_size):
             a = sess.run(
                 loaded_acc,
