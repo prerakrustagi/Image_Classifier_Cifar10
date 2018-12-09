@@ -121,12 +121,19 @@ We will use SAME padding as it will ensure same size of the image after convulat
 #### Max-Pooling
 Max-Pooling can be considered as a special type of convolution, except it doesn't have weights. The purpose is to shrink the image by letting the strongest value survived. ksize=[1,2,2,1] and strides=[1,2,2,1] will shrink the image into half size.
 
-
 ### AIM
 Minimize the cost by applying a algorithm of your choice
 
-#### Algorithm
-* Adam Optimizer
-Unlike Stochastic gradient descent where the learning rate does not change during training, in case of AdamOptimizer, the learning rate is maintained for each network weight (parameter) and separately adapted as learning unfolds.
+### Cost Function & Optimizer
+* Logits: A vector of raw (non-normalized) predictions that a classification model generates, which is ordinarily then passed to a normalization function. If the model is solving a multi-class classification problem, logits typically become an input to the softmax function. The softmax function then generates a vector of (normalized) probabilities with one value for each possible class.
 
-![Optimizer Comparison on CIFAR-10](Images/optimizers.png)
+* Cost: This is the reduced mean between the softmax (normalized) logits calculated by the network that we designed and the actual output class. The output classes are also one-hot encoded, where the actual class has a probalility of 1 and other have a probability of 0.
+
+* Optimizer Algorithm (Adam Optimizer): Unlike Stochastic gradient descent where the learning rate does not change during training, in case of AdamOptimizer, the learning rate is maintained for each network weight (parameter) and separately adapted as learning unfolds.
+
+![Optimizer Comparison](Images/optimizers.png)
+
+* Accuracy
+  * We compare the index of max value of logits for each example with the actual output. If they are same, then the image is correctly classified, else the prediction was wrong.
+  * We take a mean of all these correct predictions to find the accuracy of the batch.
+
