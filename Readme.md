@@ -22,5 +22,28 @@ We are going forward with (width x height x num_channel)
   * Reshape - convert [1, 3072] to [3, 32, 32]
   * Transpose - convert [3, 32, 32] to [32, 32, 3]
 
-
+![Image Pre-process Steps](Images/Image_Preprocess.png)
   
+## The original labels
+The label data is just a list of 10,000 numbers ranging from 0 to 9, which corresponds to each of the 10 classes in CIFAR-10
+* airplane : 0
+* automobile : 1
+* bird : 2
+* cat : 3
+* deer : 4
+* dog : 5
+* frog : 6
+* horse : 7
+* ship : 8
+* truck : 9
+
+## Pre-Process Input Data-Set
+The pixel values ranges from 0 to 255. When such a value is passed into sigmoid function, the output is almost always 1, and when it is passed into ReLU function, the output could be very huge. When back-propagation process is performed to optimize the network, these output values could lead to an vanishing gradient problems. In order to avoid the issue, it is better let all the values be around 0 and 1.
+
+### Solution
+Min-Max Normalization
+
+```
+  Normalized_Value = (value - min_value) / (max_value - min_value)
+```
+
