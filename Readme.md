@@ -38,9 +38,10 @@ The label data is just a list of 10,000 numbers ranging from 0 to 9, which corre
 * truck : 9
 
 ## 4. Pre-Process Input Data-Set
+### 4.1 Problem
 The pixel values ranges from 0 to 255. When such a value is passed into sigmoid function, the output is almost always 1, and when it is passed into ReLU function, the output could be very huge. When back-propagation process is performed to optimize the network, these output values could lead to an vanishing gradient problems. In order to avoid the issue, it is better let all the values be around 0 and 1.
 
-### 4.1 Solution
+### 4.2 Solution
 Min-Max Normalization
 
 ```
@@ -121,7 +122,7 @@ We will use SAME padding as it will ensure same size of the image after convulat
 #### 7.1.4 Max-Pooling
 Max-Pooling can be considered as a special type of convolution, except it doesn't have weights. The purpose is to shrink the image by letting the strongest value survived. ksize=[1,2,2,1] and strides=[1,2,2,1] will shrink the image into half size.
 
-### 7.2 AIM
+### 7.2 Aim
 Minimize the cost by applying a algorithm of your choice
 
 ### 7.3 Cost Function & Optimizer
@@ -137,3 +138,30 @@ Minimize the cost by applying a algorithm of your choice
   * We compare the index of max value of logits for each example with the actual output. If they are same, then the image is correctly classified, else the prediction was wrong.
   * We take a mean of all these correct predictions to find the accuracy of the batch.
 
+## 8. Training
+The process of training requires you to define the following hyperparameters
+* epochs: The number of times you need to train the classifier using the same example. We started with 5 and ultimately settled at 10, because beyond that the accuracy was not improving.
+* batch_size = The number of examples that you want to process parallelly. It depends on your system memory. We choose 128 keeping in mind the hardware constraints of our system.
+* keep_probability = in what probability how many units of each layer should be kept. We choose 0.7. This makes the dropout to be 30%.
+* learning_rate = The smallest change that the ptimizer will make in order to minimize the cost. We choose 0.001, as this value is the default recommended value by tensorflow.
+
+````
+Epoch  1, CIFAR-10 Batch 1:  Loss:     2.1369 Validation Accuracy: 0.237200
+Epoch  1, CIFAR-10 Batch 2:  Loss:     1.6714 Validation Accuracy: 0.316400
+Epoch  1, CIFAR-10 Batch 3:  Loss:     1.3447 Validation Accuracy: 0.401000
+Epoch  1, CIFAR-10 Batch 4:  Loss:     1.4517 Validation Accuracy: 0.461800
+Epoch  1, CIFAR-10 Batch 5:  Loss:     1.4294 Validation Accuracy: 0.493200
+Epoch  2, CIFAR-10 Batch 1:  Loss:     1.1890 Validation Accuracy: 0.548200
+Epoch  2, CIFAR-10 Batch 2:  Loss:     1.0403 Validation Accuracy: 0.533000
+Epoch  2, CIFAR-10 Batch 3:  Loss:     0.8671 Validation Accuracy: 0.586000
+Epoch  2, CIFAR-10 Batch 4:  Loss:     0.8815 Validation Accuracy: 0.602800
+Epoch  2, CIFAR-10 Batch 5:  Loss:     0.8441 Validation Accuracy: 0.616000
+....
+....
+....
+Epoch 10, CIFAR-10 Batch 1:  Loss:     0.0111 Validation Accuracy: 0.729800
+Epoch 10, CIFAR-10 Batch 2:  Loss:     0.0150 Validation Accuracy: 0.729200
+Epoch 10, CIFAR-10 Batch 3:  Loss:     0.0097 Validation Accuracy: 0.736600
+Epoch 10, CIFAR-10 Batch 4:  Loss:     0.0282 Validation Accuracy: 0.737000
+Epoch 10, CIFAR-10 Batch 5:  Loss:     0.0092 Validation Accuracy: 0.729600
+````
