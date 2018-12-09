@@ -1,6 +1,6 @@
 # ML_Project | Image Classifier based on CIFAR-10 Dataset
 
-## 0. How To
+## How To
 * With Pre-Trained Model
   * Copy the content of folder "Pre_Trained_Model" to the parent folder
   * python save_pre_processed_data.py
