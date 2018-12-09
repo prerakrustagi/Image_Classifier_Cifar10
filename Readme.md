@@ -233,4 +233,7 @@ Epoch 10, CIFAR-10 Batch 5:  Loss:     0.0092 Validation Accuracy: 0.729600
     ]
   ````
   * Determine the final accuracy.
+  ````
+  Testing Accuracy: 0.7282046178343949
+  ````
   
