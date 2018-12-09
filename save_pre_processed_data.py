@@ -99,4 +99,4 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
                          'preprocess_training.p')
 
 
-preprocess_and_save_data('/Users/prerak/Documents/NU_MEM/Machine Learning/TensorFlow', normalize, one_hot_encode)
+preprocess_and_save_data('./', normalize, one_hot_encode)
