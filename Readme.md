@@ -47,3 +47,79 @@ Min-Max Normalization
   Normalized_Value = (value - min_value) / (max_value - min_value)
 ```
 
+## Activation Function Used
+We used ReLU activation function. It takes an input value and outputs a new value ranging from 0 to infinity. When the input value is somewhat large, the output value increases linearly.
+
+![ReLU Graph](Images/relu.png)
+
+## Splitting of data into training-set, validation-set and test-set
+The CIFAR-10 dataset comprises of 5 batches of training-sets each having 10000 examples and a test-set of 10000 examples.
+
+* Validation-Set: Last 10% of data from every batches will be combined to form the validation dataset.
+* Training-Set: The remaining 90% of data is used for training.
+* Test-Set: Provided with the original data.
+
+## Machine Learning Classifier
+For image classification we are using convolutional neural networks. We will be using Tensoflow library by Google for designing the neural network.
+* The image data should be fed in the model so that the model could learn and output its prediction.
+* The label data should be provided at the end of the model to be compared with predicted output.
+* **tf.placeholder** in TensorFlow creates an Input. Each Input requires to specify what data-type is expected and the its shape of dimension. None in the shape means the length is undefined, and it can be anything.
+
+### Building the convolutional Layers
+When building a convolutional layer, there are three things to consider. That is the stride, padding, and filter.
+
+#### Filter
+A tensor of 3 dimensions that has the weights and convolutes over the input tensors.
+
+#### Strides
+The stride determines how much the window of filter should be moved for every convolving steps, and it is a 1-D tensor of length 4.
+Example
+Lets take a tensor of a grayscale image
+00 01 02 03 ....
+10 11 12 13 ....
+20 21 22 23 ....
+
+A stride of [1,1,1,1] with a filter of [2x2] means that the filter will cover
+````
+[ 00 01
+  10 11
+]
+in its first iteration and then 
+[ 01 02
+  11 12
+]
+in the second and after the end of first row
+[ 10 11
+  20 21 
+]
+and so on
+````
+stride[0]: No of examples to skip
+stride[3]: No of depth to skip
+
+These should be 1 because we don't want to skip any of our data, otherwise we shouldn't have included that in the first place.
+
+#### Padding
+Consider an input tensor - [1,2,3,4,5]
+Filter: [3,1,1]
+Stride: [1,2,1,1]
+
+Tensorflow provides two types of paddings
+* VALID
+````
+    Output: [1,2,3]
+    [4,5] will be dropped
+````
+* SAME
+````
+    Output: [1,2,3, 3,0,0]
+    [0,0] will be padded at the end
+````
+
+We will use SAME padding as it will ensure same size of the image after convulation.
+
+#### Max-Pooling
+Max-Pooling can be considered as a special type of convolution, except it doesn't have weights. The purpose is to shrink the image by letting the strongest value survived. ksize=[1,2,2,1] and strides=[1,2,2,1] will shrink the image into half size.
+
+
+### Hyperparameters
