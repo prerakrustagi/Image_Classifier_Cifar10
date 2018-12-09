@@ -96,24 +96,27 @@ in the second and after the end of first row
 and so on
 ````
 stride[0]: No of examples to skip
+
 stride[3]: No of depth to skip
 
 These should be 1 because we don't want to skip any of our data, otherwise we shouldn't have included that in the first place.
 
 #### 7.1.3 Padding
 Consider an input tensor - [1,2,3,4,5]
-Filter: [3,1,1]
-Stride: [1,2,1,1]
+
+Filter: [4,1,1]
+
+Stride: [1,3,1,1]
 
 Tensorflow provides two types of paddings
 * VALID
 ````
-    Output: [1,2,3]
-    [4,5] will be dropped
+    Output: [1,2,3,4]
+    [5] will be dropped
 ````
 * SAME
 ````
-    Output: [1,2,3, 3,0,0]
+    Output: [1,2,3,4 |  4,5,0,0]
     [0,0] will be padded at the end
 ````
 
