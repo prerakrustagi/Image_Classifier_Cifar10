@@ -1,6 +1,6 @@
 # ML_Project | Image Classifier based on CIFAR-10 Dataset
 
-## 0. How To
+## How To
 * With Pre-Trained Model
   * Copy the content of folder "Pre_Trained_Model" to the parent folder
   * python save_pre_processed_data.py
@@ -9,7 +9,7 @@
   * python save_pre_processed_data.py
   * GoTo file: train.py
     * Change the value of "save_model_path" to your desired path
-    * python train.py  
+    * python train.py (This step may take a couple of hours depending on your machine) 
   * python test_cnn.py    
 
 ## 1. List of files
