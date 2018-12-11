@@ -154,7 +154,7 @@ Tensorflow provides two types of paddings
     [0,0] will be padded at the end
 ````
 
-We will use SAME padding as it will ensure same size of the image after convulation.
+We will use SAME padding as it will ensure same size of the image after convolution.
 
 #### 7.1.4 Max-Pooling
 Max-Pooling can be considered as a special type of convolution, except it doesn't have weights. The purpose is to shrink the image by letting the strongest value survived. ksize=[1,2,2,1] and strides=[1,2,2,1] will shrink the image into half size.
