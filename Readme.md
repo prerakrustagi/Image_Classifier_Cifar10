@@ -1,6 +1,6 @@
 # ML_Project | Image Classifier based on CIFAR-10 Dataset
 
-**Course**: EECS 349.  
+**Course**: EECS 349  
 **University**: Northwestern University
 
 ## Project Member
