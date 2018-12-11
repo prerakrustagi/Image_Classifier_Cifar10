@@ -19,6 +19,8 @@ Initially I decided to use the naive approach of using nearest neighbour to comp
 
 The pixels of the images were the input to the CNN. Before training, all the image pixels were normalized to improve the performance of back-propagation and get useful information from the activation function. When the training starts, the pixels of the images activates the nodes of the layers based on the initial weights (initially all weights are normally distributed). The output is the probability of each class. The class with highest probability is considered the prediction of the model. This predicted output is compared with the actual output and the loss is calculated. This loss is then use to update the weights of all the nodes in the network. As the training proceeds, the weights are updated and the accuracy of the model increases. After repeated iterations, the network achieves a significantly high accuracy. In my case the model managed to achieve a validation and test accuracy of ~74% and 	~72% respectively by using 10 epochs and a dropout of 0.3 (keep_prob = 0.7).
 
+**Code**: https://github.com/prerakrustagi/Image_Classifier_Cifar10
+
 ## How To
 * With Pre-Trained Model
   * Copy the content of folder "Pre_Trained_Model" to the parent folder
