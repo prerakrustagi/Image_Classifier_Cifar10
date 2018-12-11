@@ -1,5 +1,24 @@
 # ML_Project | Image Classifier based on CIFAR-10 Dataset
 
+**Course**: EECS 349.  
+**University**: Northwestern University
+
+## Project Member
+| Name     |      Email      |
+|----------|-----------------|
+| Prerak Rustagi | PrerakRustagi2019@u.northwestern.edu   |
+
+## Introduction
+The project aims at image classification on the classic CIFAR-10 dataset using **Convolution Neural Network**. Image classification is interesting as it has a host of real life applications like 
+* Driverless vehicles
+* Smart vigilance systems
+* Face recognition
+* Action detection
+
+Initially I decided to use the naive approach of using nearest neighbour to compare the pixels of my test image with a set of images used for training. There were two main problem with this approach, firstly large test time, and secondly it was nothing more than a guess work as pixel by pixel comparison doesn’t account for shapes, orientation, position etc of an object. As the class progressed I learned about CNN. I discussed the learner with professor and decided to continue with CNN as it was capable of giving high accuracy with a lower test time. CNN comprises of a network of convolution layers followed by a multiple layers of fully-connected neural network. It requires minimal pre-processing of input and provides high accuracy.
+
+The pixels of the images were the input to the CNN. Before training, all the image pixels were normalized to improve the performance of back-propagation and get useful information from the activation function. When the training starts, the pixels of the images activates the nodes of the layers based on the initial weights (initially all weights are normally distributed). The output is the probability of each class. The class with highest probability is considered the prediction of the model. This predicted output is compared with the actual output and the loss is calculated. This loss is then use to update the weights of all the nodes in the network. As the training proceeds, the weights are updated and the accuracy of the model increases. After repeated iterations, the network achieves a significantly high accuracy. In my case the model managed to achieve a validation and test accuracy of ~74% and 	~72% respectively by using 10 epochs and a dropout of 0.3 (keep_prob = 0.7).
+
 ## How To
 * With Pre-Trained Model
   * Copy the content of folder "Pre_Trained_Model" to the parent folder
@@ -254,4 +273,9 @@ The classifier has managed to achieve a loss of 1.11% and a validation accuracy 
   ````
   Testing Accuracy: 0.7282046178343949
   ````
+## 10. Future Work
+* Include data-augmentation - Invariant Convolutional Neural Network.
+* Create a module to  to classify images outside the CIFAR-10 dataset.
+
+  
   
