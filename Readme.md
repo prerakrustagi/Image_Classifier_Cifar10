@@ -207,7 +207,7 @@ Epoch 10, CIFAR-10 Batch 5:  Loss:     0.0092 Validation Accuracy: 0.729600
 
 ![Validation Accuracy & Loss VS Epochs](Images/Valid_Acc_Loss.png)
 
-* The above chart shows the change in loss and validation accuracy of batch-1 as the number of epochs increases.
+* The above chart shows the change in loss and validation accuracy (when batch-1 is used for training) as the number of epochs increases.
 The classifier has managed to achieve a loss of 1.11% and a validation accuracy of 72.98%
 
 ## 9. Testing
